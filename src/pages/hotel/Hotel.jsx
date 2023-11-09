@@ -33,6 +33,7 @@ const Hotel = () => {
       <Header type='list' />
       <div className='hotelContainer'>
         <div className='hotelWrapper'>
+          <button className='bookNow'>Reserve or Book Now!</button>
           <h1 className='hotelTitle'>Grand Hotel</h1>
           <div className='hotelAddress'>
             <FontAwesomeIcon icon={faLocationDot} />
@@ -70,8 +71,7 @@ const Hotel = () => {
               <span>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
                 ullam blanditiis nobis? Pariatur hic culpa, sunt, ex ad
-                perferendis quidem corrupti officiis eius amet quo qui enim
-                laborum error quod.
+                perferendis quidem corrupti.
               </span>
               <h2>
                 <b>$888</b> (9 NIGHTS)
