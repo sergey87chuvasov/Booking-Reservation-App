@@ -42,6 +42,17 @@ const Hotel = () => {
     setOpen(true);
   };
 
+  const handleMove = (direction) => {
+    let newSlideNumber;
+
+    if (direction === 'l') {
+      newSlideNumber = slideNumber === 0 ? 5 : slideNumber - 1;
+    } else {
+      newSlideNumber = slideNumber === 5 ? 0 : slideNumber + 1;
+    }
+    setSlideNumber(newSlideNumber);
+  };
+
   return (
     <div>
       <Navbar />
@@ -49,16 +60,28 @@ const Hotel = () => {
       <div className='hotelContainer'>
         {open && (
           <div className='slider'>
-            <FontAwesomeIcon icon={faCircleXmark} />
-            <FontAwesomeIcon icon={faCircleArrowLeft} />
+            <FontAwesomeIcon
+              icon={faCircleXmark}
+              className='close'
+              onClick={() => setOpen(false)}
+            />
+            <FontAwesomeIcon
+              icon={faCircleArrowLeft}
+              className='arrow'
+              onClick={() => handleMove('l')}
+            />
             <div className='slideWrapper'>
               <img
                 className='sliderImg'
-                src={photos[slideNumber]}
+                src={photos[slideNumber].src}
                 alt='slide pic'
               />
             </div>
-            <FontAwesomeIcon icon={faCircleArrowRight} />
+            <FontAwesomeIcon
+              icon={faCircleArrowRight}
+              className='arrow'
+              onClick={() => handleMove('r')}
+            />
           </div>
         )}
         <div className='hotelWrapper'>
@@ -78,7 +101,7 @@ const Hotel = () => {
             {photos.map((photo, i) => (
               <div className='hotelImgWrapper'>
                 <img
-                  onClick={handleOpen}
+                  onClick={() => handleOpen(i)}
                   src={photo.src}
                   alt='hotel pic'
                   className='hotelImg'
